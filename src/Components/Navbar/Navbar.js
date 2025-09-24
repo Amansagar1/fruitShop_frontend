@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,18 +19,8 @@ import MobileDrawer from "./MobileDrawer";
 import UserMenu from "./UserMenu";
 
 const navItems = [
-  {
-    href: "/dashboard",
-    label: "Home",
-    icon: Home,
-    color: "text-orange-500",
-  },
-  {
-    href: "/about",
-    label: "About Us",
-    icon: Info,
-    color: "text-blue-500",
-  },
+  { href: "/dashboard", label: "Home", icon: Home, color: "text-orange-500" },
+  { href: "/about", label: "About Us", icon: Info, color: "text-blue-500" },
   {
     href: "/shop",
     label: "Shop",
@@ -43,24 +33,9 @@ const navItems = [
       { href: "/shop/offers", label: "Special Offers" },
     ],
   },
-  {
-    href: "/booking",
-    label: "Book Fruit Basket",
-    icon: Calendar,
-    color: "text-purple-500",
-  },
-  {
-    href: "/faq",
-    label: "FAQ",
-    icon: HelpCircle,
-    color: "text-green-500",
-  },
-  {
-    href: "/contact",
-    label: "Contact",
-    icon: Phone,
-    color: "text-red-500",
-  },
+  { href: "/booking", label: "Book Fruit Basket", icon: Calendar, color: "text-purple-500" },
+  { href: "/faq", label: "FAQ", icon: HelpCircle, color: "text-green-500" },
+  { href: "/contact", label: "Contact", icon: Phone, color: "text-red-500" },
 ];
 
 export default function Navbar() {
@@ -77,17 +52,15 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Announcement Bar */}
-     <div className="">
-       <div className="bg-gradient-to-r sticky z-50 from-red-500 to-sky-500 text-white text-sm py-2 px-4 text-center">
+      {/* Top Announcement Bar (also sticky) */}
+      <div className="bg-gradient-to-r from-red-500 to-sky-500 text-white text-sm py-2 px-4 text-center sticky top-0 z-50 ">
         🎉 Free delivery on orders over $50! Order now and get 10% off your first basket.
       </div>
 
-      {/* Main Navbar */}
-      <nav className="w-full bg-white/95 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-gray-100">
+      {/* Main Navbar (sticky below announcement) */}
+      <nav className="w-full bg-white/95 backdrop-blur-lg shadow-lg sticky top-8 z-40 border-b border-gray-100 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between h-24">
-            
             {/* Logo */}
             <Link href="/dashboard" className="flex items-center space-x-3 flex-shrink-0">
               <div className="relative w-24 h-20">
@@ -99,10 +72,6 @@ export default function Navbar() {
                   priority
                 />
               </div>
-              {/* <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-red-900">MAA ANANTA FRUITS</h1>
-                <p className="text-xs text-gray-600">Fresh & Delicious</p>
-              </div> */}
             </Link>
 
             {/* Desktop Navigation */}
@@ -117,7 +86,7 @@ export default function Navbar() {
                     <span>{item.label}</span>
                     {item.submenu && <ChevronDown className="w-3 h-3 ml-1" />}
                   </Link>
-                  
+
                   {/* Submenu Dropdown */}
                   {item.submenu && (
                     <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -140,7 +109,6 @@ export default function Navbar() {
 
             {/* Right Side Actions */}
             <div className="flex items-center space-x-4">
-              
               {/* Search */}
               <div className="relative">
                 <AnimatePresence>
@@ -156,14 +124,14 @@ export default function Navbar() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search fruits..."
-                        className="w-full pl-3 pr-10 py-2 text-sm bg-gray-100 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        className="w-34 pl-3 pr-10 ml-7 py-2 text-sm bg-gray-100 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent "
                       />
                     </motion.div>
                   )}
                 </AnimatePresence>
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
-                  className="p-2 text-gray-600 hover:text-orange-600 transition-colors"
+                  className="p-2 text-gray-600 hover:text-orange-600 transition-colors "
                 >
                   <Search className="w-5 h-5" />
                 </button>
@@ -196,7 +164,6 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <MobileDrawer open={mobileOpen} setOpen={setMobileOpen} navItems={navItems} />
-     </div>
     </>
   );
 }
