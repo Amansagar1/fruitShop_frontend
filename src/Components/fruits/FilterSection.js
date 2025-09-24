@@ -20,7 +20,7 @@ const FilterSection = ({
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
       {/* Search Bar */}
-      <div className="relative mb-6">
+      {/* <div className="relative mb-6">
         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
         <input
           type="text"
@@ -37,7 +37,7 @@ const FilterSection = ({
             <X size={20} />
           </button>
         )}
-      </div>
+      </div> */}
 
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Category Filter */}
@@ -105,13 +105,13 @@ const FilterSection = ({
               <h3 className="font-semibold text-gray-700 mb-3">Price Range</h3>
               <div className="space-y-4">
                 <div className="flex justify-between text-sm text-gray-600">
-                  <span>${priceRange[0]}</span>
-                  <span>${priceRange[1]}</span>
+                  <span>₹{priceRange[0]}</span>
+                  <span>₹{priceRange[1]}</span>
                 </div>
                 <input
                   type="range"
-                  min="0"
-                  max="10"
+                  min="20"
+                  max="500"
                   step="0.5"
                   value={priceRange[1]}
                   onChange={(e) => setPriceRange([priceRange[0], parseFloat(e.target.value)])}
@@ -125,11 +125,11 @@ const FilterSection = ({
 
       {/* Price Range Filter (Desktop) */}
       <div className="hidden lg:block border-t mt-6 pt-6">
-        <h3 className="font-semibold text-gray-700 mb-3">Price Range: ${priceRange[0]} - ${priceRange[1]}</h3>
+        <h3 className="font-semibold text-gray-700 mb-3">Price Range: ₹{priceRange[0]} - ₹{priceRange[1]}</h3>
         <input
           type="range"
-          min="0"
-          max="10"
+          min="20"
+          max="500"
           step="0.5"
           value={priceRange[1]}
           onChange={(e) => setPriceRange([priceRange[0], parseFloat(e.target.value)])}

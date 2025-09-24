@@ -146,11 +146,15 @@ const FruitCard = ({ fruit, onAddToCart, index }) => {
           <div className="flex items-center justify-between ">
             <div className="flex items-baseline space-x-2">
               <span className="text-2xl font-bold text-green-600">
-                ${fruit.price}
+               
+
+₹{fruit.price}
               </span>
               {fruit.originalPrice > fruit.price && (
                 <span className="text-sm text-gray-500 line-through">
-                  ${fruit.originalPrice}
+                  
+
+₹{fruit.originalPrice}
                 </span>
               )}
             </div>
